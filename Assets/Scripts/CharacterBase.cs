@@ -4,46 +4,23 @@ using System.Collections.Generic;
 
 public class CharacterBase : MonoBehaviour
 {
+    [SerializeField]
+    protected Camera mainCamera;
+
+    [SerializeField]
+    protected float runSpeedThreshold;
+
     protected Animator animator;
     protected Rigidbody rigidBody;
 
-    protected bool isMoving = false;
     protected float northDir = -1;
-    protected float eastDir  = 0;
-
-    [SerializeField]
-    protected float movingSpeed;
+    protected float eastDir = 0;
 
     void Start ()
     {
         animator = GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody>();
     }
-	
-	void Update ()
-    {
-        float verticalInput   = Input.GetAxisRaw("Vertical");
-        float horizontalInput = Input.GetAxisRaw("Horizontal");        
-
-        if (verticalInput != 0 || horizontalInput != 0)
-        {
-            northDir = Mathf.Sign(verticalInput) * (Mathf.Abs(verticalInput) > 0.1 ? 1 : 0);
-            eastDir = Mathf.Sign(horizontalInput) * (Mathf.Abs(horizontalInput) > 0.1 ? 1 : 0);
-
-            Vector3 velocity = rigidBody.velocity;
-            velocity.z = northDir;
-            velocity.x = eastDir;
-            rigidBody.velocity = velocity.normalized * movingSpeed;
-
-            isMoving = true;
-        }
-        else
-        {
-            rigidBody.velocity = Vector3.zero;
-
-            isMoving = false;
-        }
-	}
 
     void FixedUpdate()
     {
@@ -52,12 +29,37 @@ public class CharacterBase : MonoBehaviour
 
     protected void UpdateAnimations()
     {
-        if (animator != null)
+        Vector3 velocity = rigidBody.velocity;
+        float speed = velocity.magnitude;
+
+        if (speed > runSpeedThreshold)
         {
-            animator.SetBool("is_running", isMoving);
-            animator.SetFloat("move_speed", movingSpeed);
+            Camera cam = GetCamera();
+
+            Vector3 forward = cam.transform.TransformDirection(Vector3.forward);
+            Vector3 right = cam.transform.TransformDirection(Vector3.right);
+
+            northDir = Vector3.Dot(velocity, forward);
+            eastDir = Vector3.Dot(velocity, right);
+
+            northDir = Mathf.Sign(northDir) * (Mathf.Abs(northDir) > 0.1 ? 1 : 0);
+            eastDir = Mathf.Sign(eastDir) * (Mathf.Abs(eastDir) > 0.1 ? 1 : 0);
+        }
+
+        if (animator != null)
+        {   
+            animator.SetBool("is_running", (speed > runSpeedThreshold));
+            animator.SetFloat("move_speed", speed);
             animator.SetFloat("north_dir", northDir);
             animator.SetFloat("east_dir", eastDir);
         }
+    }
+
+    protected Camera GetCamera()
+    {
+        if (mainCamera != null)
+            return mainCamera;
+        else
+            return Camera.main;
     }
 }
