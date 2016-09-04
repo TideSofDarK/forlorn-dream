@@ -11,14 +11,18 @@ public class CharacterController : MonoBehaviour
     protected float movingSpeed;
 
     protected Rigidbody rigidBody;
+    protected CharacterBase characterBase;
 
     void Start ()
     {
         rigidBody = GetComponent<Rigidbody>();
+        characterBase = GetComponent<CharacterBase>();
     }
 
     void Update()
     {
+        Camera cam = GetCamera();
+
         float verticalInput = Input.GetAxisRaw("Vertical");
         float horizontalInput = Input.GetAxisRaw("Horizontal");
 
@@ -27,8 +31,6 @@ public class CharacterController : MonoBehaviour
 
         if (verticalInput != 0 || horizontalInput != 0)
         {
-            Camera cam = GetCamera();
-
             Vector3 forward = cam.transform.TransformDirection(Vector3.forward);
             Vector3 right = cam.transform.TransformDirection(Vector3.right);
 
@@ -38,10 +40,28 @@ public class CharacterController : MonoBehaviour
             velocity.y = 0;
 
             rigidBody.velocity = velocity.normalized * movingSpeed;
+
+            characterBase.SetLookDirection(velocity.normalized);
         }
         else
         {
             rigidBody.velocity = Vector3.zero;
+        }
+
+        bool rotateLeft  = Input.GetKey(KeyCode.Q);
+        bool rotateRight = Input.GetKey(KeyCode.E);
+
+        if (rotateLeft || rotateRight)
+        {
+            CameraFollow cameraFollow = cam.GetComponent<CameraFollow>();
+
+            if (cameraFollow != null)
+            {
+                if (rotateLeft)
+                    cameraFollow.RotateAroundTargetSmooth(-45, 0.1f);
+                if (rotateRight)
+                    cameraFollow.RotateAroundTargetSmooth(45, 0.1f);
+            }
         }
     }
 
