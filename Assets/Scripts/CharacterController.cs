@@ -58,9 +58,9 @@ public class CharacterController : MonoBehaviour
             if (cameraFollow != null)
             {
                 if (rotateLeft)
-                    cameraFollow.RotateAroundTargetSmooth(-45, 0.1f);
+                    cameraFollow.RotateAroundTargetSmooth(-45, 180);
                 if (rotateRight)
-                    cameraFollow.RotateAroundTargetSmooth(45, 0.1f);
+                    cameraFollow.RotateAroundTargetSmooth(45, 180);
             }
         }
     }

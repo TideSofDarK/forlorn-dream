@@ -10,7 +10,7 @@ public class CameraFollow : MonoBehaviour
 
     protected float currentAngle;
     protected float targetAngle;
-    protected float rotationSmoothness;
+    protected float rotationSpeed;
     protected bool isRotating = false;
 
     void Start()
@@ -22,7 +22,7 @@ public class CameraFollow : MonoBehaviour
     void Update()
     {
         FollowTarget();
-        Rotate();
+        Rotate(Time.deltaTime);
     }
 
     public void SetFollowTarget(Transform target)
@@ -32,14 +32,14 @@ public class CameraFollow : MonoBehaviour
         currentAngle = 0;
     }
 
-    public void RotateAroundTargetSmooth(float angle, float smoothness)
+    public void RotateAroundTargetSmooth(float angle, float speed)
     {
         if (targetToFollow != null)
         {
             if (!isRotating)
                 targetAngle = currentAngle + angle;
 
-            rotationSmoothness = smoothness;
+            rotationSpeed = speed;
 
             isRotating = true;
         }
@@ -58,14 +58,22 @@ public class CameraFollow : MonoBehaviour
         }
     }
 
-    protected void Rotate()
+    protected void Rotate(float timeDelta)
     {
         if (isRotating)
         {
-            float newAngle = Mathf.Lerp(currentAngle, targetAngle, rotationSmoothness);
+            float curToTargetAngle = targetAngle - currentAngle;
+
+            float angleDiff = Mathf.Sign(curToTargetAngle) * rotationSpeed * timeDelta;
+
+            if (Mathf.Abs(angleDiff) > Mathf.Abs(curToTargetAngle))
+                angleDiff = curToTargetAngle;
+
+            float newAngle = currentAngle + angleDiff;
+
             SetRotationAngle(newAngle);
 
-            if (Mathf.Abs(currentAngle - targetAngle) < 0.1)
+            if (Mathf.Abs(targetAngle - currentAngle) < 0.1)
             {
                 SetRotationAngle(targetAngle);
                 isRotating = false;
