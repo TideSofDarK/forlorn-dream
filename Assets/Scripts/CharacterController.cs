@@ -17,6 +17,8 @@ public class CharacterController : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody>();
         characterBase = GetComponent<CharacterBase>();
+
+        Camera.main.transparencySortMode = TransparencySortMode.Orthographic;
     }
 
     void Update()
