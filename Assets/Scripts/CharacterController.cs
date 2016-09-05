@@ -8,7 +8,10 @@ public class CharacterController : MonoBehaviour
     protected Camera mainCamera;
 
     [SerializeField]
-    protected float movingSpeed;
+    protected float defaultRunSpeed = 0.1f;
+
+    [SerializeField]
+    protected float defaultWalkSpeed = 0.05f;
 
     protected Rigidbody rigidBody;
     protected CharacterBase characterBase;
@@ -25,10 +28,13 @@ public class CharacterController : MonoBehaviour
     {
         Camera cam = GetCamera();
 
-        float verticalInput = Input.GetAxisRaw("Vertical");
+        float verticalInput   = Input.GetAxisRaw("Vertical");
         float horizontalInput = Input.GetAxisRaw("Horizontal");
+        bool isRunKeyPressed  = Input.GetKey(KeyCode.LeftShift);
+        bool rotateLeft       = Input.GetKey(KeyCode.Q);
+        bool rotateRight      = Input.GetKey(KeyCode.E);
 
-        verticalInput = Mathf.Sign(verticalInput) * (Mathf.Abs(verticalInput) > 0.1 ? 1 : 0);
+        verticalInput   = Mathf.Sign(verticalInput) * (Mathf.Abs(verticalInput) > 0.1 ? 1 : 0);
         horizontalInput = Mathf.Sign(horizontalInput) * (Mathf.Abs(horizontalInput) > 0.1 ? 1 : 0);
 
         if (verticalInput != 0 || horizontalInput != 0)
@@ -41,17 +47,21 @@ public class CharacterController : MonoBehaviour
             velocity = forward * verticalInput + right * horizontalInput;
             velocity.y = 0;
 
-            rigidBody.velocity = velocity.normalized * movingSpeed;
+            velocity = velocity.normalized;
+
+            if (isRunKeyPressed)
+                velocity *= defaultRunSpeed;
+            else
+                velocity *= defaultWalkSpeed;
+
+            rigidBody.velocity = velocity;
 
             characterBase.SetLookDirection(velocity.normalized);
         }
         else
         {
             rigidBody.velocity = Vector3.zero;
-        }
-
-        bool rotateLeft  = Input.GetKey(KeyCode.Q);
-        bool rotateRight = Input.GetKey(KeyCode.E);
+        }        
 
         if (rotateLeft || rotateRight)
         {

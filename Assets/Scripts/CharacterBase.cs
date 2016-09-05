@@ -8,7 +8,10 @@ public class CharacterBase : MonoBehaviour
     protected Camera mainCamera;
 
     [SerializeField]
-    protected float runSpeedThreshold;
+    protected float runSpeedThreshold = 0.09f;
+
+    [SerializeField]
+    protected float walkSpeedThreshold = 0.04f;
 
     protected Animator animator;
     protected Rigidbody rigidBody;
@@ -56,8 +59,9 @@ public class CharacterBase : MonoBehaviour
         float speed = velocity.magnitude;
 
         if (animator != null)
-        {   
+        {
             animator.SetBool("is_running", (speed > runSpeedThreshold));
+            animator.SetBool("is_walking", (speed > walkSpeedThreshold));
             animator.SetFloat("move_speed", speed);
             animator.SetFloat("north_dir", lookForward);
             animator.SetFloat("east_dir", lookRight);
