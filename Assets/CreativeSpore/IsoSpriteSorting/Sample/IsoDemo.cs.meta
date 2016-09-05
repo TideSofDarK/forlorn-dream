@@ -1,7 +1,10 @@
 fileFormatVersion: 2
-guid: 293795ffa807edf4991f0ccbe9fc7c40
-timeCreated: 1473026044
-licenseType: Free
+guid: 7c87ca71cabaad046b0eeec07c92f070
+labels:
+- Isometric
+- Sorting
+- Sorter
+- Sprite
 MonoImporter:
   serializedVersion: 2
   defaultReferences: []

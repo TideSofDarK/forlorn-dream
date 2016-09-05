@@ -1,7 +1,10 @@
 fileFormatVersion: 2
-guid: 9612002e881fb23479a5c4695eee819b
-timeCreated: 1472825940
-licenseType: Free
+guid: 626686438ca9121468bbd4075a7dce0d
+labels:
+- Isometric
+- Sorting
+- Sorter
+- Sprite
 NativeFormatImporter:
   userData: 
   assetBundleName: 
