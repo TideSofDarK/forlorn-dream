@@ -57,7 +57,7 @@ namespace CreativeSpore.SpriteSorting
         /// <summary>
         /// Sorting axis
         /// </summary>
-        public eSortingAxis SorterAxis = eSortingAxis.Y;
+        public eSortingAxis SorterAxis = eSortingAxis.CameraForward;
         public Vector3 SorterPositionOffset = new Vector3();
 
         /// <summary>
