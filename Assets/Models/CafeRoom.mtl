@@ -1,0 +1,5 @@
+newmtl cafe_wall
+map_Kd cafe_wall_1.png
+Kd 1.0 1.0 1.0
+d 1.0
+

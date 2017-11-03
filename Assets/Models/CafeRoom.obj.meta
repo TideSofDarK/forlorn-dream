@@ -1,0 +1,147 @@
+fileFormatVersion: 2
+guid: b9f87d67ff5566340a920a27898197d3
+timeCreated: 1508562233
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Plane_0
+    100004: Plane_1
+    100006: Plane_2
+    100008: Plane_3
+    100010: Plane_4
+    100012: Plane_5
+    400000: //RootNode
+    400002: Plane_0
+    400004: Plane_1
+    400006: Plane_2
+    400008: Plane_3
+    400010: Plane_4
+    400012: Plane_5
+    2300000: Plane_0
+    2300002: Plane_1
+    2300004: Plane_2
+    2300006: Plane_3
+    2300008: Plane_4
+    2300010: Plane_5
+    3300000: Plane_0
+    3300002: Plane_1
+    3300004: Plane_2
+    3300006: Plane_3
+    3300008: Plane_4
+    3300010: Plane_5
+    4300000: Plane_0
+    4300002: Plane_1
+    4300004: Plane_2
+    4300006: Plane_3
+    4300008: Plane_4
+    4300010: Plane_5
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FDSprite
+    second: {fileID: 2100000, guid: 655066cbf80549247b1989834a8c4c91, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cafe_floor_3
+    second: {fileID: 2100000, guid: 0f6f61531f4d418448c17eb887904d49, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cafe_floor_4
+    second: {fileID: 2100000, guid: 5859d2f9ab20671408435b67895b0a87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cafe_floor_5
+    second: {fileID: 2100000, guid: 861fb25670c08b34f92ae3b203698785, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cafe_wall_3
+    second: {fileID: 2100000, guid: de2ff8a06edf058498fb6fad160a2017, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cafe_wall_4
+    second: {fileID: 2100000, guid: 7760ea5f75d44b741be8e4fef9b2252f, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
